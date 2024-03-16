@@ -1,0 +1,17 @@
+text='Generate JSON matching the query according to the format instructions. You are configuring a report, true means that the data should be included in the report and false means that it should not. If you are unsure include extra information. Use UTF8 encoding. Include only the JSON response without commentary or code blocks. Format instructions and query details are provided below.\nFormat Instructions: The output should be formatted as a JSON instance that conforms to the JSON schema below.\n\nAs an example, for the schema {"properties": {"foo": {"title": "Foo", "description": "a list of strings", "type": "array", "items": {"type": "string"}}}, "required": ["foo"]}\nthe object {"foo": ["bar", "baz"]} is a well-formatted instance of the schema. The object {"properties": {"foo": ["bar", "baz"]}} is not well-formatted.\n\nHere is the output schema:\n```\n{"properties": {"start_month": {"enum": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "title": "Start Month", "type": "string"}, "start_year": {"title": "Start Year", "type": "integer"}, "end_month": {"enum": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "title": "End Month", "type": "string"}, "end_year": {"title": "End Year", "type": "integer"}, "lease_type": {"enum": ["All", "Operating", "Finance"], "title": "Lease Type", "type": "string"}, "region": {"enum": ["All", "APAC", "EUROPE", "LATAM", "MEA", "NA"], "title": "Region", "type": "string"}, "separate_by_asset_category": {"title": "Separate By Asset Category", "type": "boolean"}, "show_in_base_currency": {"default": false, "title": "Show In Base Currency", "type": "boolean"}, "use_ifrs": {"title": "Use Ifrs", "type": "boolean"}, "show_split_business_unit_allocations": {"title": "Show Split Business Unit Allocations", "type": "boolean"}, "show_split_cost_centers": {"title": "Show Split Cost Centers", "type": "boolean"}, "filter_leases_by_reporting_dates": {"title": "Filter Leases By Reporting Dates", "type": "boolean"}}, "required": ["start_month", "start_year", "end_month", "end_year", "lease_type", "region", "separate_by_asset_category", "use_ifrs", "show_split_business_unit_allocations", "show_split_cost_centers", "filter_leases_by_reporting_dates"]}\n```\nQuery: ifrs reporting on sept 12 to october 24'
+-----
+{
+"start_month": "September",
+"start_year": 2022,
+"end_month": "October",
+"end_year": 2022,
+"lease_type": "All",
+"region": "All",
+"separate_by_asset_category": false,
+"use_ifrs": true,
+"show_split_business_unit_allocations": false,
+"show_split_cost_centers": false,
+"filter_leases_by_reporting_dates": false
+}
+-----
+start_month='September' start_year=2022 end_month='October' end_year=2022 lease_type='All' region='All' separate_by_asset_category=False show_in_base_currency=False use_ifrs=True show_split_business_unit_allocations=False show_split_cost_centers=False filter_leases_by_reporting_dates=False
